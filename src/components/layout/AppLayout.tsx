@@ -3,15 +3,15 @@ import {
   Box, Drawer, List, ListItem, ListItemButton, 
   ListItemIcon, ListItemText, Toolbar, AppBar, Typography 
 } from '@mui/material';
-import { Home, People, Apartment, RequestPage, AddTask } from '@mui/icons-material';
+import { Home, Apartment, RequestPage, AddTask } from '@mui/icons-material';
 import { UserRole } from  '../../types';
+import { Outlet } from 'react-router-dom';
 
 interface AppLayoutProps {
   userRole: UserRole;
-  children: React.ReactNode;
 }
 
-export const AppLayout = ({ userRole, children }: AppLayoutProps) => (
+export const AppLayout = ({ userRole }: AppLayoutProps) => (
   <Box sx={{ display: 'flex' }}>
     <AppBar position="fixed" sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}>
       <Toolbar>
@@ -68,7 +68,7 @@ export const AppLayout = ({ userRole, children }: AppLayoutProps) => (
 
     <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
       <Toolbar />
-      {children}
+      <Outlet /> 
     </Box>
   </Box>
 );

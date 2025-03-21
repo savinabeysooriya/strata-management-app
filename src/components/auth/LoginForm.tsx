@@ -28,7 +28,7 @@ export const LoginForm = () => {
     try {
       const response = await authService.login(data);
       login(response.token);
-      navigate('/dashboard');
+      navigate('/');
     } catch (error) {
       setError('root', {
         type: 'manual',
