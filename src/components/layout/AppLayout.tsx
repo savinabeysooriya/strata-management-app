@@ -4,14 +4,13 @@ import {
   ListItemIcon, ListItemText, Toolbar, AppBar, Typography 
 } from '@mui/material';
 import { Home, Apartment, RequestPage, AddTask } from '@mui/icons-material';
-import { UserRole } from  '../../types';
 import { Outlet } from 'react-router-dom';
+import { useAuth } from '../../context/AuthContext';
 
-interface AppLayoutProps {
-  userRole: UserRole;
-}
 
-export const AppLayout = ({ userRole }: AppLayoutProps) => (
+export const AppLayout = () => {
+  const { userRole } = useAuth();
+  return (
   <Box sx={{ display: 'flex' }}>
     <AppBar position="fixed" sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}>
       <Toolbar>
@@ -25,7 +24,7 @@ export const AppLayout = ({ userRole }: AppLayoutProps) => (
       <Toolbar />
       <Box sx={{ overflow: 'auto' }}>
         <List>
-          {userRole === 'admin' ? (
+          {userRole === 'Admin' ? (
             <>
               <ListItem disablePadding>
                 <ListItemButton component={Link} to="/">
@@ -48,6 +47,12 @@ export const AppLayout = ({ userRole }: AppLayoutProps) => (
             </>
           ) : (
             <>
+              <ListItem disablePadding>
+                <ListItemButton component={Link} to="/">
+                  <ListItemIcon><Home /></ListItemIcon>
+                  <ListItemText primary="Dashboard" />
+                </ListItemButton>
+              </ListItem>
               <ListItem disablePadding>
                 <ListItemButton component={Link} to="/my-building">
                   <ListItemIcon><Apartment /></ListItemIcon>
@@ -72,3 +77,4 @@ export const AppLayout = ({ userRole }: AppLayoutProps) => (
     </Box>
   </Box>
 );
+};

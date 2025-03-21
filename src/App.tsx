@@ -1,8 +1,5 @@
-import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
-import { useState } from 'react';
+import { BrowserRouter as Router, Route, Routes, Navigate} from 'react-router-dom';
 import { AppLayout } from './components/layout/AppLayout';
-import { AppRoutes } from './routes/AppRoutes';
-import { UserRole } from './types';
 import { AuthProvider } from './context/AuthContext';
 import { LoginForm } from './components/auth/LoginForm';
 import { ProtectedRoute } from './components/auth/ProtectedRoute';
@@ -13,7 +10,6 @@ import { TenantView } from './components/dashboards/TenantView';
 import { NewRequestForm } from './components/dashboards/NewRequestForm';
 
 export default function App() {
-  const [userRole] = useState<UserRole>('admin');
 
   return (
     <Router>
@@ -21,7 +17,7 @@ export default function App() {
         <Routes>
           <Route path="/login" element={<LoginForm />} />
           <Route element={<ProtectedRoute />}>
-            <Route element={<AppLayout userRole={userRole} />}>
+            <Route element={<AppLayout/>}>
               <Route index element={<AdminDashboard />} />
               <Route path="/" element={<AdminDashboard />} />
               <Route path="/buildings" element={<BuildingList />} />
@@ -30,6 +26,7 @@ export default function App() {
               <Route path="/new-request" element={<NewRequestForm />} />
             </Route>
           </Route>
+          <Route path="*" element={<Navigate to="/login" replace />} />
         </Routes>
       </AuthProvider>
     </Router>

@@ -27,7 +27,7 @@ export const LoginForm = () => {
   const onSubmit = async (data: LoginFormData) => {
     try {
       const response = await authService.login(data);
-      login(response.token);
+      login(response.token, response.userRole);
       navigate('/');
     } catch (error) {
       setError('root', {
