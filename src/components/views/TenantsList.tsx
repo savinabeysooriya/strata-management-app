@@ -1,17 +1,17 @@
 import { useState, useEffect } from 'react';
 import { CircularProgress, Typography, Button, Box, TableContainer, TableHead, TableCell, TableRow, Table, TableBody, Paper } from '@mui/material';
-import { maintenanceRequestsService } from '../../services/maintenanceRequests';
-import { MaintenanceRequest } from '../../types/maintenanceRequests';
+import { tenantsService } from '../../services/tenants';
+import { Tenant } from '../../types/tenant';
 
-const CACHE_KEY = 'maintenanceRequests_cache';
+const CACHE_KEY = 'tenants_cache';
 const CACHE_EXPIRY = 15 * 60 * 1000; // 15 minutes
 
-export const MaintenanceRequestsList = () => {
-  const [maintenanceRequests, setMaintenanceRequests] = useState<MaintenanceRequest[]>([]);
+export const TenantsList = () => {
+  const [tenants, setTenants] = useState<Tenant[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  const fetchMaintenanceRequests = async (useCache = true) => {
+  const fetchTenants = async (useCache = true) => {
     try {
       setLoading(true);
       setError(null);
@@ -25,15 +25,15 @@ export const MaintenanceRequestsList = () => {
         const timeDiff = Date.now() - parseInt(cachedTime);
 
         if (timeDiff < CACHE_EXPIRY) {
-          setMaintenanceRequests(parsedData);
+          setTenants(parsedData);
           setLoading(false);
           return;
         }
       }
 
       // Fetch fresh data
-      const data = await maintenanceRequestsService.getMaintenanceRequests();
-      setMaintenanceRequests(data);
+      const data = await tenantsService.getTenants();
+      setTenants(data);
 
       // Update cache
       localStorage.setItem(CACHE_KEY, JSON.stringify(data));
@@ -47,13 +47,13 @@ export const MaintenanceRequestsList = () => {
   };
 
   useEffect(() => {
-    fetchMaintenanceRequests();
+    fetchTenants();
   }, []);
 
   const handleRefresh = () => {
     localStorage.removeItem(CACHE_KEY);
     localStorage.removeItem(`${CACHE_KEY}_time`);
-    fetchMaintenanceRequests(false);
+    fetchTenants(false);
   };
 
   if (loading) {
@@ -93,45 +93,33 @@ export const MaintenanceRequestsList = () => {
           <Table aria-label="buildings table" sx={{ minWidth: 650 }}>
             <TableHead>
               <TableRow>
-                <TableCell sx={{ fontWeight: 'bold' }}>Title</TableCell>
-                <TableCell sx={{ fontWeight: 'bold' }}>Description</TableCell>
-                <TableCell sx={{ fontWeight: 'bold' }}>Status</TableCell>
-                <TableCell sx={{ fontWeight: 'bold' }}>CreatedByUserId</TableCell>
-                <TableCell sx={{ fontWeight: 'bold' }}>AssignedBuildingId</TableCell>
-                <TableCell sx={{ fontWeight: 'bold' }}>CreatedDate</TableCell>
+                <TableCell sx={{ fontWeight: 'bold' }}>Name</TableCell>
+                <TableCell sx={{ fontWeight: 'bold' }}>Contact</TableCell>
+                <TableCell sx={{ fontWeight: 'bold' }}>BuildingId</TableCell>
+                <TableCell sx={{ fontWeight: 'bold' }}>UnitId</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
-              {maintenanceRequests.map((maintenanceRequest) => (
+              {tenants.map((tenant) => (
                 <TableRow
-                  key={maintenanceRequest.id}
+                  key={tenant.id}
                   hover
                   sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                 >
                   <TableCell component="th" scope="row">
-                    <Typography variant="subtitle1">{maintenanceRequest.title}</Typography>
+                    <Typography variant="subtitle1">{tenant.name}</Typography>
                   </TableCell>
                   <TableCell>
-                    <Typography variant="body2">{maintenanceRequest.description}</Typography>
+                    <Typography variant="body2">{tenant.contact}</Typography>
                   </TableCell>
                   <TableCell>
                     <Typography variant="body2">
-                      {maintenanceRequest.status}
-                    </Typography>
-                  </TableCell>
-                  <TableCell>
-                  <Typography variant="body2">
-                      {maintenanceRequest.createdByUserId}
-                    </Typography>
-                  </TableCell>
-                  <TableCell>
-                  <Typography variant="body2">
-                      {maintenanceRequest.assignedBuildingId}
+                      {tenant.buildingId}
                     </Typography>
                   </TableCell>
                   <TableCell>
                     <Typography variant="body2">
-                      {maintenanceRequest.createdDate}
+                      {tenant.unitId}
                     </Typography>
                   </TableCell>
                 </TableRow>

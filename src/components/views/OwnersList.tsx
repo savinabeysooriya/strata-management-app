@@ -39,7 +39,7 @@ export const OwnersList = () => {
       localStorage.setItem(CACHE_KEY, JSON.stringify(data));
       localStorage.setItem(`${CACHE_KEY}_time`, Date.now().toString());
     } catch (err) {
-      setError('Failed to fetch buildings');
+      setError('Failed to fetch Owners');
       console.error(err);
     } finally {
       setLoading(false);
