@@ -9,12 +9,14 @@ import { MaintenanceRequestsList } from './components/views/MaintenanceRequestsL
 import { NewRequestForm } from './components/views/NewRequestForm';
 import { OwnersList } from './components/views/OwnersList';
 import { TenantsList } from './components/views/TenantsList';
+import { ToastContainer } from 'react-toastify';
 
 export default function App() {
 
   return (
     <Router>
       <AuthProvider>
+      <ToastContainer />
         <Routes>
           <Route path="/login" element={<LoginForm />} />
           <Route element={<ProtectedRoute />}>

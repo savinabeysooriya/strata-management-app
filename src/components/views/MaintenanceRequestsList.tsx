@@ -6,6 +6,7 @@ import { StatusOption } from '../../types/statusOptions';
 import CloseIcon from '@mui/icons-material/Close';
 import EditIcon from '@mui/icons-material/Edit';
 import moment from 'moment';
+import { toast } from 'react-toastify';
 
 const CACHE_KEY = 'maintenanceRequests_cache';
 const CACHE_EXPIRY = 15 * 60 * 1000; // 15 minutes
@@ -95,6 +96,7 @@ export const MaintenanceRequestsList = () => {
     localStorage.setItem(CACHE_KEY, JSON.stringify(updatedRequests));
     localStorage.setItem(`${CACHE_KEY}_time`, Date.now().toString());
     setEditingId(null);
+    toast.success("Status updated successfully!");
   };
 
   return (
