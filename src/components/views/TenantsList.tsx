@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { CircularProgress, Typography, Button, Box, TableContainer, TableHead, TableCell, TableRow, Table, TableBody, Paper } from '@mui/material';
 import { tenantsService } from '../../services/tenants';
 import { Tenant } from '../../types/tenant';
+import { toast } from 'react-toastify';
 
 const CACHE_KEY = 'tenants_cache';
 const CACHE_EXPIRY = 15 * 60 * 1000; // 15 minutes
@@ -54,6 +55,7 @@ export const TenantsList = () => {
     localStorage.removeItem(CACHE_KEY);
     localStorage.removeItem(`${CACHE_KEY}_time`);
     fetchTenants(false);
+    toast.success("Refreshed...!");
   };
 
   if (loading) {

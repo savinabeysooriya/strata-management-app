@@ -66,6 +66,7 @@ export const MaintenanceRequestsList = () => {
     localStorage.removeItem(CACHE_KEY);
     localStorage.removeItem(`${CACHE_KEY}_time`);
     fetchMaintenanceRequests(false);
+    toast.success("Refreshed...!");
   };
 
   if (loading) {

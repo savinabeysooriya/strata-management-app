@@ -10,5 +10,22 @@ export const buildingsService = {
     } catch (error) {
       throw error;
     }
+  },
+
+  getMyBuilding: async (): Promise<Building[]> => {
+    try {
+      const token = localStorage.getItem('token');
+      if (!token) {
+        throw new Error('No token found in local storage');
+      }
+      const response = await axios.get(`${API_BASE_URL}/building-member/my-building`, {
+        headers: {
+            Authorization: `Bearer ${token}`,
+          },
+      });
+      return response.data;
+    } catch (error) {
+      throw error;
+    }
   }
 };

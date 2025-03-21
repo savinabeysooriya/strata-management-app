@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { CircularProgress, Typography, Button, Box, TableContainer, TableHead, TableCell, TableRow, Table, TableBody, Paper } from '@mui/material';
 import { buildingsService } from '../../services/buildings';
 import { Building } from '../../types/building';
+import { toast } from 'react-toastify';
 
 const CACHE_KEY = 'buildings_cache';
 const CACHE_EXPIRY = 15 * 60 * 1000; // 15 minutes
@@ -54,6 +55,7 @@ export const BuildingList = () => {
     localStorage.removeItem(CACHE_KEY);
     localStorage.removeItem(`${CACHE_KEY}_time`);
     fetchBuildings(false);
+    toast.success("Refreshed...!");
   };
 
   if (loading) {

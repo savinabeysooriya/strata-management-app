@@ -10,6 +10,7 @@ import { NewRequestForm } from './components/views/NewRequestForm';
 import { OwnersList } from './components/views/OwnersList';
 import { TenantsList } from './components/views/TenantsList';
 import { ToastContainer } from 'react-toastify';
+import { MyBuilding } from './components/views/MyBuilding';
 
 export default function App() {
 
@@ -28,6 +29,7 @@ export default function App() {
               <Route path="/requests" element={<MaintenanceRequestsList />} />
               <Route path="/tenants" element={<TenantsList />} />
               <Route path="/new-request" element={<NewRequestForm />} />
+              <Route path="/my-building" element={<MyBuilding />} />
             </Route>
           </Route>
           <Route path="*" element={<Navigate to="/login" replace />} />
