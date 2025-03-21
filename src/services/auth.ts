@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { LoginFormData } from '../types/auth';
 
-const API_BASE_URL = 'https://localhost:44328';
+export const API_BASE_URL = 'https://localhost:44328';
 
 export const authService = {
   login: async (credentials: LoginFormData) => {

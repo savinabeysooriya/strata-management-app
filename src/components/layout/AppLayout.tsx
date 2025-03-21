@@ -3,7 +3,7 @@ import {
   Box, Drawer, List, ListItem, ListItemButton, 
   ListItemIcon, ListItemText, Toolbar, AppBar, Typography 
 } from '@mui/material';
-import { Home, Apartment, RequestPage, AddTask } from '@mui/icons-material';
+import { Home, People, Apartment, RequestPage, AddTask } from '@mui/icons-material';
 import { Outlet } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 
@@ -36,6 +36,12 @@ export const AppLayout = () => {
                 <ListItemButton component={Link} to="/buildings">
                   <ListItemIcon><Apartment /></ListItemIcon>
                   <ListItemText primary="Buildings" />
+                </ListItemButton>
+              </ListItem>
+              <ListItem disablePadding>
+                <ListItemButton component={Link} to="/owners">
+                  <ListItemIcon><People /></ListItemIcon>
+                  <ListItemText primary="Owners" />
                 </ListItemButton>
               </ListItem>
               <ListItem disablePadding>
