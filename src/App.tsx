@@ -20,10 +20,11 @@ export default function App() {
       <ToastContainer />
         <Routes>
           <Route path="/login" element={<LoginForm />} />
+          <Route path="/" element={<Navigate to="/login" replace />} /> 
           <Route element={<ProtectedRoute />}>
             <Route element={<AppLayout/>}>
               <Route index element={<AdminDashboard />} />
-              <Route path="/" element={<AdminDashboard />} />
+              <Route path="/dashboard" element={<AdminDashboard />} />
               <Route path="/buildings" element={<BuildingList />} />
               <Route path="/owners" element={<OwnersList/>} />
               <Route path="/requests" element={<MaintenanceRequestsList />} />

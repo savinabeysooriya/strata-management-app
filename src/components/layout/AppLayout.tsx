@@ -38,7 +38,7 @@ export const AppLayout = () => {
             {userRole === 'Admin' ? (
               <>
                 <ListItem disablePadding>
-                  <ListItemButton component={Link} to="/">
+                  <ListItemButton component={Link} to="/dashboard">
                     <ListItemIcon><Home /></ListItemIcon>
                     <ListItemText primary="Dashboard" />
                   </ListItemButton>

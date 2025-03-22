@@ -20,7 +20,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     localStorage.setItem('userRole', role);
     setToken(newToken);
     setUserRole(role);
-    navigate('/');
+    navigate('/dashboard');
   };
 
   const logout = () => {
@@ -32,6 +32,13 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     localStorage.removeItem('myMaintenanceRequests_cache');
     localStorage.removeItem('owners_cache');
     localStorage.removeItem('tenants_cache');
+
+    localStorage.removeItem('buildings_cache_time');
+    localStorage.removeItem('maintenanceRequests_cache_time');
+    localStorage.removeItem('mybuildings_cache_time');
+    localStorage.removeItem('myMaintenanceRequests_cache_time');
+    localStorage.removeItem('owners_cache_time');
+    localStorage.removeItem('tenants_cache_time');
     setToken(null);
     setUserRole(null);
     navigate('/login');
