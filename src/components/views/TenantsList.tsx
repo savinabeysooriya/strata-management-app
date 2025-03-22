@@ -70,7 +70,7 @@ export const TenantsList = () => {
     return (
       <Box display="flex" flexDirection="column" alignItems="center" mt={4}>
         <Typography color="error" gutterBottom>{error}</Typography>
-        <Button variant="contained" onClick={handleRefresh}>
+        <Button variant="contained" onClick={handleRefresh} sx={{ textTransform: 'none' }}>
           Retry
         </Button>
       </Box>
@@ -85,6 +85,7 @@ export const TenantsList = () => {
           variant="outlined"
           onClick={handleRefresh}
           disabled={loading}
+          sx={{ textTransform: 'none' }}
         >
           Refresh
         </Button>

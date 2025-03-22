@@ -6,7 +6,6 @@ import { ProtectedRoute } from './components/auth/ProtectedRoute';
 import { AdminDashboard } from './components/views/AdminDashboard';
 import { BuildingList } from './components/views/BuildingList';
 import { MaintenanceRequestsList } from './components/views/MaintenanceRequestsList';
-import { NewRequestForm } from './components/views/NewRequestForm';
 import { OwnersList } from './components/views/OwnersList';
 import { TenantsList } from './components/views/TenantsList';
 import { ToastContainer } from 'react-toastify';
@@ -29,7 +28,6 @@ export default function App() {
               <Route path="/owners" element={<OwnersList/>} />
               <Route path="/requests" element={<MaintenanceRequestsList />} />
               <Route path="/tenants" element={<TenantsList />} />
-              <Route path="/new-request" element={<NewRequestForm />} />
               <Route path="/my-building" element={<MyBuilding />} />
               <Route path="/my-requests" element={<MyMaintenanceRequests />} />
             </Route>

@@ -26,6 +26,12 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const logout = () => {
     localStorage.removeItem('token');
     localStorage.removeItem('userRole');
+    localStorage.removeItem('buildings_cache');
+    localStorage.removeItem('maintenanceRequests_cache');
+    localStorage.removeItem('mybuildings_cache');
+    localStorage.removeItem('myMaintenanceRequests_cache');
+    localStorage.removeItem('owners_cache');
+    localStorage.removeItem('tenants_cache');
     setToken(null);
     setUserRole(null);
     navigate('/login');

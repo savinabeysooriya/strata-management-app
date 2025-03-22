@@ -132,7 +132,7 @@ export const MyMaintenanceRequests = () => {
         return (
             <Box display="flex" flexDirection="column" alignItems="center" mt={4}>
                 <Typography color="error" gutterBottom>{errorMyBuilding}{ }</Typography>
-                <Button variant="contained" onClick={handleRefresh}>
+                <Button variant="contained" onClick={handleRefresh} sx={{ textTransform: 'none' }}>
                     Retry
                 </Button>
             </Box>
@@ -167,7 +167,7 @@ export const MyMaintenanceRequests = () => {
     return (
         <div>
             <Box display="flex" justifyContent="space-between" alignItems="center" mb={3}>
-                <Button variant="contained" startIcon={<Add />} onClick={() => setIsCreateModalOpen(true)}>
+                <Button variant="contained" startIcon={<Add />} onClick={() => setIsCreateModalOpen(true)} sx={{ textTransform: 'none' }}>
                     Create
                 </Button>
                 <Typography variant="h5" gutterBottom sx={{ fontWeight: 'bold' }}>My Maintenance Requests</Typography>
@@ -176,6 +176,7 @@ export const MyMaintenanceRequests = () => {
                         variant="outlined"
                         onClick={handleRefresh}
                         disabled={loadingMyBuilding || loadingMyMaintenanceRequests}
+                        sx={{ textTransform: 'none' }}
                     >
                         Refresh
                     </Button>
@@ -234,8 +235,8 @@ export const MyMaintenanceRequests = () => {
                         </FormControl>
                     </DialogContent>
                     <DialogActions>
-                        <Button onClick={() => setIsCreateModalOpen(false)}>Cancel</Button>
-                        <Button type="submit" variant="contained" color="primary">
+                        <Button onClick={() => setIsCreateModalOpen(false)} sx={{ textTransform: 'none' }}>Cancel</Button>
+                        <Button type="submit" variant="contained" color="primary" sx={{ textTransform: 'none' }}>
                             Create
                         </Button>
                     </DialogActions>
