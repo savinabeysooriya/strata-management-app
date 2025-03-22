@@ -11,6 +11,7 @@ import { OwnersList } from './components/views/OwnersList';
 import { TenantsList } from './components/views/TenantsList';
 import { ToastContainer } from 'react-toastify';
 import { MyBuilding } from './components/views/MyBuilding';
+import { MyMaintenanceRequests } from './components/views/MyMaintenanceRequests';
 
 export default function App() {
 
@@ -30,6 +31,7 @@ export default function App() {
               <Route path="/tenants" element={<TenantsList />} />
               <Route path="/new-request" element={<NewRequestForm />} />
               <Route path="/my-building" element={<MyBuilding />} />
+              <Route path="/my-requests" element={<MyMaintenanceRequests />} />
             </Route>
           </Route>
           <Route path="*" element={<Navigate to="/login" replace />} />

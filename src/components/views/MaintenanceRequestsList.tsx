@@ -103,7 +103,7 @@ export const MaintenanceRequestsList = () => {
   return (
     <div>
       <Box display="flex" justifyContent="space-between" alignItems="center" mb={3}>
-        <Typography variant="h5" gutterBottom sx={{ fontWeight: 'bold' }}>MaintenanceRequests</Typography>
+        <Typography variant="h5" gutterBottom sx={{ fontWeight: 'bold' }}>Maintenance Requests</Typography>
         <Button
           variant="outlined"
           onClick={handleRefresh}
