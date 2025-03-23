@@ -26,8 +26,8 @@ This is the frontend for the **Strata Management Portal** ,built using  **React*
 
 ## Installation
 
-git clone https://github.com/savinabeysooriya/strata-management-app.git\
-cd strata-management-app\
+git clone https://github.com/savinabeysooriya/strata-management-app.git \
+cd strata-management-app \
 npm install  
 
 ### `npm start`
