@@ -8,7 +8,8 @@ This is the frontend for the **Strata Management Portal** ,built using  **React*
 
 **Admin View**
   - List of Buildings, Owners, and Tenants.
-  - List of Maintenance Requests with a **Status Update Feature**.
+  - List of Maintenance Requests with a Status Update Feature.
+
 **Owner/Tenant View**
   - View Assigned Building and Maintenance Requests.
   - Create New Maintenance Requests.
