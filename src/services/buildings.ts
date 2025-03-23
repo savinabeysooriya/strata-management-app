@@ -5,7 +5,15 @@ import { Building } from '../types/building';
 export const buildingsService = {
   getBuildings: async (): Promise<Building[]> => {
     try {
-      const response = await axios.get(`${API_BASE_URL}/admin/buildings`);
+      const token = localStorage.getItem('token');
+      if (!token) {
+        throw new Error('No token found in local storage');
+      }
+      const response = await axios.get(`${API_BASE_URL}/admin/buildings`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
       return response.data;
     } catch (error) {
       throw error;
